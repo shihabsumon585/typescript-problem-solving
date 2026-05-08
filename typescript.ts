@@ -28,13 +28,34 @@ type JobDetails = {
     sallary: number;
 }
 type Employee = Person & JobDetails;
-const employee : Employee = {
+const employee: Employee = {
     name: "Md Shihab Sumon",
     age: 23,
     role: "Next Level Developer",
     sallary: 25000
 }
-const getProfile = ({name, role}: Employee): string => {
+const getProfile = ({ name, role }: Employee): string => {
     return `Name: ${name}, Role: ${role}`
 }
 // console.log(getProfile(employee));
+
+
+// problem 3
+type UserResponse = {
+    info?: {
+        address?: {
+            zipCode?: string | null; // undefined না লেখার কারণ হচ্ছে optional chaining ? use করলে অটোমেটিক undefined allowed করে;
+        }
+    }
+};
+const userResponse : UserResponse = {
+    info: {
+        address: {
+            zipCode: undefined
+        }
+    }
+}
+const getZipCode = (response: UserResponse) : string => {
+return response?.info?.address?.zipCode ?? "00000";
+};
+console.log(getZipCode(userResponse));
