@@ -59,3 +59,8 @@ const getZipCode = (response: UserResponse) : string => {
 return response?.info?.address?.zipCode ?? "00000";
 };
 console.log(getZipCode(userResponse));
+
+
+// problem 4
+let secretValue: unknown = "typescript is awesome";
+const upperValue = (secretValue as string).toUpperCase();
